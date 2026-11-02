@@ -51,8 +51,37 @@
 .enrich-content{padding:16px}.enrich-content h3{margin:0 0 7px}.enrich-content p{margin:0 0 10px}.enrich-action{color:#196b65;font-weight:bold}
 .enrich-delete{margin:0 16px 16px;color:#9c3030;border-color:#e5bcbc}
 @media(max-width:700px){.enrich-nav{padding:0 12px}.enrich-nav button{width:100%;justify-content:center}}
+
+/* Development Lens — independent of the five existing wings */
+.lens-launch{max-width:1140px;margin:18px auto 0;padding:0 12px;display:flex;justify-content:center}
+.lens-launch button{width:min(100%,590px);display:flex;align-items:center;justify-content:center;gap:12px;padding:19px 22px;border:1px solid #d9d9b9;background:linear-gradient(120deg,#f9fcf9,#f3f6e9);box-shadow:0 5px 20px #214a3010;font-size:20px;font-weight:bold;color:#235f53}
+.lens-launch button small{font-size:13px;color:#687d70;font-weight:normal}
+.lens-tabs{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.lens-tabs button.selected{background:#196b65;color:white;border-color:#196b65}
+.lens-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:15px;margin:17px 0}
+.lens-item{border:1px solid #dbe8dd;border-radius:15px;padding:17px;background:#fcfefd;min-width:0}
+.lens-item h3{font-size:17px;margin:0 0 8px;line-height:1.6}
+.lens-item p{margin:5px 0}.lens-item .actions{margin-top:12px}
+.lens-link{display:inline-block;background:#196b65;color:#fff!important;text-decoration:none;border-radius:9px;padding:9px 13px;font-size:13px;margin:5px 0 0 6px}
+.lens-file{display:inline-block;color:#196b65;text-decoration:none;border:1px solid #b9d4c5;border-radius:9px;padding:8px 12px;font-size:13px;margin:5px 0 0 6px}
+.lens-search{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0}.lens-search input,.lens-search select{font:inherit;padding:11px;border:1px solid #bfd1c5;border-radius:10px;background:white;flex:1;min-width:170px}
+.lens-empty{background:#f6faf6;border-radius:12px;padding:18px;color:#647b70}
+@media(max-width:700px){.lens-launch{margin:12px auto 0}.lens-launch button{font-size:17px}.lens-tabs button{flex:1}}
 </style></head><body><main><div class="hero-scroll"><div class="hero"><img alt="مجتمعات الأحياء المهنية الرقمية — التصميم المعتمد" src="biology-preview.jpg"><button class="hotspot" style="left:1.803%;width:18.810%" onclick="openWing(0)" aria-label="استراتيجيات التدريس الحديثة"></button><button class="hotspot" style="left:21.334%;width:18.630%" onclick="openWing(1)" aria-label="الابتكار والتطوير المهني"></button><button class="hotspot" style="left:40.865%;width:18.630%" onclick="openWing(2)" aria-label="التقويم وتحسين نواتج التعلم"></button><button class="hotspot" style="left:60.096%;width:18.630%" onclick="openWing(3)" aria-label="تبادل الخبرات والممارسات"></button><button class="hotspot" style="left:79.627%;width:18.630%" onclick="openWing(4)" aria-label="إثراء تعليم الأحياء"></button></div></div>
-<nav class="mobile-wings" aria-label="أجنحة مجتمعات الأحياء المهنية"><button class="mobile-wing" onclick="openWing(0)">استراتيجيات التدريس الحديثة</button><button class="mobile-wing" onclick="openWing(1)">الابتكار والتطوير المهني</button><button class="mobile-wing" onclick="openWing(2)">التقويم وتحسين نواتج التعلم</button><button class="mobile-wing" onclick="openWing(3)">تبادل الخبرات والممارسات</button><button class="mobile-wing" onclick="openWing(4)">إثراء تعليم الأحياء</button></nav><div class="adminbar"><button class="admin" id="adminToggle" onclick="toggleAdmin()">دخول إدارة المعرض</button></div><section class="panel hidden" id="wing"><div class="headrow"><div><h1 id="wingTitle"></h1><p class="muted">مجتمعات مهنية موثقة تتجدد على مدار العام الدراسي</p></div><button onclick="goHome()">العودة إلى الأجنحة ←</button></div><div id="entries" class="grid"></div><div class="enrich-nav hidden"><button onclick="openEnrichment()" aria-label="الإثراء المعرفي">📚 الإثراء المعرفي</button></div><section class="panel hidden" id="enrichment"><div class="headrow"><div><h1>الإثراء المعرفي</h1><p class="muted">مكتبات ومصادر رقمية متجددة بإسهامات معلمات الأحياء</p></div><button onclick="closeEnrichment()">العودة إلى جناح إثراء تعليم الأحياء ←</button></div><div id="enrichCards" class="enrich-grid"></div><div id="enrichAdmin" class="hidden"><div class="actions"><button class="primary" onclick="toggleEnrichForm()">+ إضافة رابط إثرائي</button></div><div id="enrichForm" class="form hidden"><h2>إضافة مصدر إثرائي</h2><label for="enrichTitle">اسم المكتبة أو المصدر</label><input id="enrichTitle" maxlength="150" placeholder="مثل: نواة المعرفة"><label for="enrichDesc">وصف مختصر</label><textarea id="enrichDesc" rows="3" maxlength="500" placeholder="رحلات علمية ومصادر تفاعلية..."></textarea><label for="enrichUrl">رابط الموقع (https://)</label><input id="enrichUrl" type="url" placeholder="https://sites.google.com/..."><label for="enrichCoverFile">صورة الغلاف من جهازك (اختياري)</label><input id="enrichCoverFile" type="file" accept="image/png,image/jpeg,image/webp"><p class="muted">اختاري صورة PNG أو JPG أو WEBP بحجم لا يزيد على 5 ميجابايت، أو اتركيها فارغة لعرض رمز المكتبة.</p><div class="actions"><button class="primary" id="saveEnrichButton" onclick="saveEnrichment()">حفظ الرابط</button><button onclick="toggleEnrichForm()">إلغاء</button></div></div><p class="notice">تُحفظ الروابط في قاعدة البيانات وتظهر للزائرات من الرابط نفسه. إضافة محتوى جديد إلى المكتبة لا تتطلب تعديل هذا الموقع.</p></div></section><div id="adminArea" class="hidden"><div class="actions"><button class="primary" onclick="toggleForm()">+ إضافة مجتمع مهني</button></div><div class="form hidden" id="form"><h2>إضافة مجتمع</h2><label>عنوان المجتمع</label><input id="title" placeholder="عنوان المجتمع المهني"><label>المعلمة المنفذة</label><input id="teacher" placeholder="اسم المعلمة"><label>تاريخ التنفيذ (اختياري)</label><input id="date" placeholder="1448/4/15"><label>إرفاق ملفات المجتمع (PDF) من جهازك — يمكن اختيار أكثر من ملف</label><input id="pdfFiles" type="file" accept="application/pdf,.pdf" multiple><p class="muted">تُعرض الصفحة الأولى من كل ملف تلقائيًا كصورة مصغّرة.</p><div class="actions"><button class="primary" onclick="saveEntry()">إضافة للمعرض</button><button onclick="toggleForm()">إلغاء</button></div></div><p class="notice">تُحفظ المجتمعات وملفات PDF في التخزين السحابي وتظهر للزوار من الرابط نفسه بعد النشر.</p></div></section><footer>الثانوية الثانية بالواسط | معلمات الأحياء: عفاف العتيبي · حسناء الزهراني · فائزة الطلحي</footer></main><div id="viewer" class="viewer hidden"><div class="viewerhead"><strong id="viewerTitle">عرض الملف</strong><button onclick="closeViewer()">إغلاق ✕</button></div><iframe id="pdfFrame" title="استعراض ملف PDF" referrerpolicy="no-referrer"></iframe></div>
+<nav class="mobile-wings" aria-label="أجنحة مجتمعات الأحياء المهنية"><button class="mobile-wing" onclick="openWing(0)">استراتيجيات التدريس الحديثة</button><button class="mobile-wing" onclick="openWing(1)">الابتكار والتطوير المهني</button><button class="mobile-wing" onclick="openWing(2)">التقويم وتحسين نواتج التعلم</button><button class="mobile-wing" onclick="openWing(3)">تبادل الخبرات والممارسات</button><button class="mobile-wing" onclick="openWing(4)">إثراء تعليم الأحياء</button></nav><div class="lens-launch"><button onclick="openLens()" aria-label="عدسة التطوير">🔎 <span>عدسة التطوير <small style="display:block">حصاد الخبرات | من الخبرة إلى التطبيق</small></span></button></div>
+<section class="panel hidden" id="lensPanel"><div class="headrow"><div><h1>🔎 عدسة التطوير</h1><p class="muted">حصاد الخبرات وتبادل الأنشطة التفاعلية بين معلمات الأحياء</p></div><button onclick="closeLens()">العودة إلى الصفحة الرئيسية ←</button></div>
+<div class="lens-tabs"><button id="lensTabReports" class="selected" onclick="switchLens('report')">📑 حصاد الخبرات</button><button id="lensTabActivities" onclick="switchLens('activity')">✨ من الخبرة إلى التطبيق</button></div>
+<div id="lensReportIntro" class="muted">تقارير عدسة التطوير وشواهد الزيارات الصفية المتبادلة.</div>
+<div id="lensActivityTools" class="lens-search hidden"><input id="lensSearch" placeholder="ابحثي باسم المعلمة أو النشاط أو الدرس..." oninput="renderLens()" aria-label="البحث عن نشاط"><select id="lensCourseFilter" onchange="renderLens()" aria-label="تصفية المقرر"><option value="">جميع المقررات</option></select></div>
+<div id="lensItems" class="lens-list"></div>
+<div id="lensAdmin" class="hidden"><button class="primary" id="lensAddToggle" onclick="toggleLensForm()">+ إضافة تقرير</button>
+<div id="lensForm" class="form hidden"><h2 id="lensFormTitle">إضافة تقرير حصاد الخبرات</h2>
+<div id="lensActivityFields" class="hidden"><label for="lensTeacher">اسم المعلمة</label><input id="lensTeacher" maxlength="150" placeholder="اسم المعلمة صاحبة النشاط"><label for="lensCourse">المقرر الدراسي</label><input id="lensCourse" maxlength="100" placeholder="مثل: أحياء 1-1"><label for="lensLesson">عنوان الدرس</label><input id="lensLesson" maxlength="160" placeholder="عنوان الدرس"></div>
+<label for="lensTitle">عنوان <span id="lensTitleKind">التقرير</span></label><input id="lensTitle" maxlength="180" placeholder="عنوان التقرير"><div id="lensActivityUrlField" class="hidden"><label for="lensUrl">رابط النشاط (اختياري إذا أرفقتِ ملفًا)</label><input id="lensUrl" type="url" placeholder="https://..."></div>
+<label for="lensFiles">إرفاق ملفات من جهازك (يمكن اختيار أكثر من ملف)</label><input id="lensFiles" type="file" accept=".pdf,.png,.jpg,.jpeg,.webp,application/pdf,image/png,image/jpeg,image/webp" multiple><p class="muted">صور JPG / PNG / WEBP أو ملفات PDF، بحد أقصى 10 ميجابايت لكل ملف. في بنك الأنشطة يمكن الاكتفاء بالرابط.</p>
+<div class="actions"><button id="lensSaveBtn" class="primary" onclick="saveLens()">حفظ</button><button onclick="toggleLensForm(false)">إلغاء</button></div></div>
+<p class="notice">إضافة المحتوى متاحة لمسؤولة المنصة فقط، وتظهر الملفات والأنشطة للزائرات بعد حفظها.</p></div></section>
+<div class="adminbar"><button class="admin" id="adminToggle" onclick="toggleAdmin()">دخول إدارة المعرض</button></div><section class="panel hidden" id="wing"><div class="headrow"><div><h1 id="wingTitle"></h1><p class="muted">مجتمعات مهنية موثقة تتجدد على مدار العام الدراسي</p></div><button onclick="goHome()">العودة إلى الأجنحة ←</button></div><div id="entries" class="grid"></div><div class="enrich-nav hidden"><button onclick="openEnrichment()" aria-label="الإثراء المعرفي">📚 الإثراء المعرفي</button></div><section class="panel hidden" id="enrichment"><div class="headrow"><div><h1>الإثراء المعرفي</h1><p class="muted">مكتبات ومصادر رقمية متجددة بإسهامات معلمات الأحياء</p></div><button onclick="closeEnrichment()">العودة إلى جناح إثراء تعليم الأحياء ←</button></div><div id="enrichCards" class="enrich-grid"></div><div id="enrichAdmin" class="hidden"><div class="actions"><button class="primary" onclick="toggleEnrichForm()">+ إضافة رابط إثرائي</button></div><div id="enrichForm" class="form hidden"><h2>إضافة مصدر إثرائي</h2><label for="enrichTitle">اسم المكتبة أو المصدر</label><input id="enrichTitle" maxlength="150" placeholder="مثل: نواة المعرفة"><label for="enrichDesc">وصف مختصر</label><textarea id="enrichDesc" rows="3" maxlength="500" placeholder="رحلات علمية ومصادر تفاعلية..."></textarea><label for="enrichUrl">رابط الموقع (https://)</label><input id="enrichUrl" type="url" placeholder="https://sites.google.com/..."><label for="enrichCoverFile">صورة الغلاف من جهازك (اختياري)</label><input id="enrichCoverFile" type="file" accept="image/png,image/jpeg,image/webp"><p class="muted">اختاري صورة PNG أو JPG أو WEBP بحجم لا يزيد على 5 ميجابايت، أو اتركيها فارغة لعرض رمز المكتبة.</p><div class="actions"><button class="primary" id="saveEnrichButton" onclick="saveEnrichment()">حفظ الرابط</button><button onclick="toggleEnrichForm()">إلغاء</button></div></div><p class="notice">تُحفظ الروابط في قاعدة البيانات وتظهر للزائرات من الرابط نفسه. إضافة محتوى جديد إلى المكتبة لا تتطلب تعديل هذا الموقع.</p></div></section><div id="adminArea" class="hidden"><div class="actions"><button class="primary" onclick="toggleForm()">+ إضافة مجتمع مهني</button></div><div class="form hidden" id="form"><h2>إضافة مجتمع</h2><label>عنوان المجتمع</label><input id="title" placeholder="عنوان المجتمع المهني"><label>المعلمة المنفذة</label><input id="teacher" placeholder="اسم المعلمة"><label>تاريخ التنفيذ (اختياري)</label><input id="date" placeholder="1448/4/15"><label>إرفاق ملفات المجتمع (PDF) من جهازك — يمكن اختيار أكثر من ملف</label><input id="pdfFiles" type="file" accept="application/pdf,.pdf" multiple><p class="muted">تُعرض الصفحة الأولى من كل ملف تلقائيًا كصورة مصغّرة.</p><div class="actions"><button class="primary" onclick="saveEntry()">إضافة للمعرض</button><button onclick="toggleForm()">إلغاء</button></div></div><p class="notice">تُحفظ المجتمعات وملفات PDF في التخزين السحابي وتظهر للزوار من الرابط نفسه بعد النشر.</p></div></section><footer>الثانوية الثانية بالواسط | معلمات الأحياء: عفاف العتيبي · حسناء الزهراني · فائزة الطلحي</footer></main><div id="viewer" class="viewer hidden"><div class="viewerhead"><strong id="viewerTitle">عرض الملف</strong><button onclick="closeViewer()">إغلاق ✕</button></div><iframe id="pdfFrame" title="استعراض ملف PDF" referrerpolicy="no-referrer"></iframe></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
 const URL_BASE='https://plyhfzdxgxjsbpmoejuc.supabase.co';
@@ -72,10 +101,10 @@ async function toggleAdmin(){
  if(result.user?.id!==ADMIN_UID){await sb.auth.signOut();alert('هذا الحساب غير مخول بإدارة المعرض');return}
  admin=true;updateAdmin();
 }
-function updateAdmin(){ $('enrichAdmin').classList.toggle('hidden',!admin);if(!document.getElementById('enrichment').classList.contains('hidden'))renderEnrichment(); $('adminToggle').textContent=admin?'تسجيل الخروج من الإدارة':'دخول إدارة المعرض';$('adminArea').classList.toggle('hidden',!admin);if(active>=0)render() }
+function updateAdmin(){ $('lensAdmin').classList.toggle('hidden',!admin); $('enrichAdmin').classList.toggle('hidden',!admin);if(!document.getElementById('enrichment').classList.contains('hidden'))renderEnrichment(); $('adminToggle').textContent=admin?'تسجيل الخروج من الإدارة':'دخول إدارة المعرض';$('adminArea').classList.toggle('hidden',!admin);if(active>=0)render() }
 async function refreshAuth(){const {data:{user}}=await sb.auth.getUser();admin=!!user&&user.id===ADMIN_UID;updateAdmin()}
-function openWing(i){$('enrichment').classList.add('hidden');active=i;$('wing').classList.remove('hidden');$('wingTitle').textContent=names[i];document.querySelector('.enrich-nav').classList.toggle('hidden',i!==4);$('adminArea').classList.toggle('hidden',!admin);$('form').classList.add('hidden');render();$('wing').scrollIntoView({behavior:'smooth'})}
-function goHome(){$('enrichment').classList.add('hidden');$('wing').classList.add('hidden');active=-1;scrollTo({top:0,behavior:'smooth'})}
+function openWing(i){$('lensPanel').classList.add('hidden');$('enrichment').classList.add('hidden');active=i;$('wing').classList.remove('hidden');$('wingTitle').textContent=names[i];document.querySelector('.enrich-nav').classList.toggle('hidden',i!==4);$('adminArea').classList.toggle('hidden',!admin);$('form').classList.add('hidden');render();$('wing').scrollIntoView({behavior:'smooth'})}
+function goHome(){$('lensPanel').classList.add('hidden');$('enrichment').classList.add('hidden');$('wing').classList.add('hidden');active=-1;scrollTo({top:0,behavior:'smooth'})}
 function toggleForm(){$('form').classList.toggle('hidden')}
 async function loadData(){const {data:rows,error}=await sb.from('communities').select('*').order('title');if(error){console.error(error);$('entries').textContent='تعذر تحميل المجتمعات. تحققي من إعدادات القراءة في قاعدة البيانات.';return}data=rows||[];if(active>=0)render()}
 async function saveEntry(){
@@ -132,6 +161,92 @@ async function saveEnrichment(){
  }catch(err){showError(err)}finally{button.disabled=false;button.textContent='حفظ الرابط'}
 }
 async function deleteEnrichment(id){if(!admin||!confirm('هل تريدين حذف هذا الرابط الإثرائي؟'))return;const {error}=await sb.from('enrichment_links').delete().eq('id',id);if(error)showError(error);else await loadEnrichment()}
+
+
+// Development Lens: independent Supabase table and bucket, preserving all existing data.
+let lensMode='report',lensRows=[];
+function openLens(){
+ $('wing').classList.add('hidden');$('enrichment').classList.add('hidden');active=-1;
+ $('lensPanel').classList.remove('hidden');switchLens(lensMode);$('lensPanel').scrollIntoView({behavior:'smooth'});
+}
+function closeLens(){$('lensPanel').classList.add('hidden');window.scrollTo({top:0,behavior:'smooth'})}
+function switchLens(mode){
+ lensMode=mode;
+ $('lensTabReports').classList.toggle('selected',mode==='report');
+ $('lensTabActivities').classList.toggle('selected',mode==='activity');
+ $('lensReportIntro').classList.toggle('hidden',mode!=='report');
+ $('lensActivityTools').classList.toggle('hidden',mode!=='activity');
+ $('lensAddToggle').textContent=mode==='report'?'+ إضافة تقرير':'+ إضافة نشاط تفاعلي';
+ $('lensFormTitle').textContent=mode==='report'?'إضافة تقرير حصاد الخبرات':'إضافة نشاط تفاعلي';
+ $('lensTitleKind').textContent=mode==='report'?'التقرير':'النشاط';
+ $('lensActivityFields').classList.toggle('hidden',mode!=='activity');
+ $('lensActivityUrlField').classList.toggle('hidden',mode!=='activity');
+ $('lensForm').classList.add('hidden');loadLens();
+}
+function toggleLensForm(force){const el=$('lensForm');if(typeof force==='boolean')el.classList.toggle('hidden',!force);else el.classList.toggle('hidden')}
+async function loadLens(){
+ const {data:rows,error}=await sb.from('development_lens').select('*').order('created_at',{ascending:false});
+ if(error){console.warn('Development Lens database setup required:',error);$('lensItems').textContent='قسم عدسة التطوير يحتاج تشغيل إعداد قاعدة البيانات المرفق قبل رفع الملفات.';return}
+ lensRows=rows||[];renderLens();
+}
+function lensPublicUrl(path){return sb.storage.from('development-lens-files').getPublicUrl(path).data.publicUrl}
+function renderLens(){
+ const root=$('lensItems');root.replaceChildren();
+ const query=($('lensSearch').value||'').trim().toLocaleLowerCase('ar');
+ const courses=[...new Set(lensRows.filter(x=>x.kind==='activity'&&x.course).map(x=>x.course))].sort((a,b)=>a.localeCompare(b,'ar'));
+ const filter=$('lensCourseFilter'),current=filter.value;filter.replaceChildren();let all=document.createElement('option');all.value='';all.textContent='جميع المقررات';filter.append(all);
+ courses.forEach(c=>{let o=document.createElement('option');o.value=c;o.textContent=c;filter.append(o)});filter.value=courses.includes(current)?current:'';
+ const list=lensRows.filter(x=>x.kind===lensMode&& (lensMode==='report'||((!filter.value||x.course===filter.value)&&[x.title,x.teacher,x.course,x.lesson].some(v=>(v||'').toLocaleLowerCase('ar').includes(query)))));
+ if(!list.length){let p=document.createElement('p');p.className='lens-empty';p.textContent=lensMode==='report'?'لم تُضف تقارير بعد.':'لا توجد أنشطة مطابقة حاليًا.';root.append(p);return}
+ for(const item of list){
+  const card=document.createElement('article');card.className='lens-item';
+  const h=document.createElement('h3');h.textContent=item.title;card.append(h);
+  if(item.kind==='activity'){
+   const p=document.createElement('p');p.className='muted';p.textContent=[item.teacher,item.course,item.lesson?'الدرس: '+item.lesson:''].filter(Boolean).join(' | ');card.append(p);
+   if(item.url&&safeHttps(item.url)){const a=document.createElement('a');a.className='lens-link';a.href=safeHttps(item.url);a.target='_blank';a.rel='noopener noreferrer';a.textContent='فتح النشاط ↗';card.append(a)}
+  }
+  for(const f of (Array.isArray(item.files)?item.files:[])){
+   if(!f||typeof f.path!=='string'||!f.path.startsWith('lens/'))continue;
+   const a=document.createElement('a');a.className='lens-file';a.href=lensPublicUrl(f.path);a.target='_blank';a.rel='noopener noreferrer';a.textContent='📎 '+(f.name||'عرض الملف');card.append(a)
+  }
+  if(admin){const del=document.createElement('button');del.className='filebtn';del.style.color='#9c3030';del.textContent='حذف';del.onclick=()=>deleteLens(item);card.append(del)}
+  root.append(card)
+ }
+}
+async function saveLens(){
+ if(!admin)return alert('الدخول إلى الإدارة مطلوب');
+ const title=$('lensTitle').value.trim(),teacher=$('lensTeacher').value.trim(),course=$('lensCourse').value.trim(),lesson=$('lensLesson').value.trim(),url=$('lensUrl').value.trim();
+ const files=[...$('lensFiles').files];
+ if(!title)return alert('أدخلي عنوان التقرير أو النشاط');
+ if(lensMode==='activity'&&(!teacher||!course||!lesson))return alert('أدخلي اسم المعلمة والمقرر والدرس');
+ if(lensMode==='activity'&&url&&!safeHttps(url))return alert('رابط النشاط يجب أن يبدأ بـ https://');
+ if(!files.length&&(lensMode==='report'||!safeHttps(url)))return alert('أرفقي ملفًا أو أدخلي رابط النشاط');
+ if(files.some(f=>!['application/pdf','image/jpeg','image/png','image/webp'].includes(f.type)||f.size>10*1024*1024))return alert('المسموح PDF أو صور JPG/PNG/WEBP، بحد أقصى 10 ميجابايت لكل ملف');
+ const btn=$('lensSaveBtn');btn.disabled=true;btn.textContent='جارٍ الحفظ...';
+ const uploaded=[];
+ try{
+  for(const f of files){
+   const ext={'application/pdf':'pdf','image/jpeg':'jpg','image/png':'png','image/webp':'webp'}[f.type];
+   const path='lens/'+crypto.randomUUID()+'.'+ext;
+   const {error}=await sb.storage.from('development-lens-files').upload(path,f,{contentType:f.type,upsert:false});if(error)throw error;
+   uploaded.push({name:f.name,path});
+  }
+  const row={kind:lensMode,title,teacher:lensMode==='activity'?teacher:null,course:lensMode==='activity'?course:null,lesson:lensMode==='activity'?lesson:null,url:lensMode==='activity'?(safeHttps(url)||null):null,files:uploaded};
+  const {error}=await sb.from('development_lens').insert(row);if(error)throw error;
+  ['lensTitle','lensTeacher','lensCourse','lensLesson','lensUrl','lensFiles'].forEach(id=>$(id).value='');
+  toggleLensForm(false);await loadLens();
+ }catch(err){showError(err);if(uploaded.length)alert('قد تكون بعض الملفات قد رُفعت قبل تعذر الحفظ؛ يرجى مراجعة التخزين قبل المحاولة مرة أخرى.')}
+ finally{btn.disabled=false;btn.textContent='حفظ'}
+}
+async function deleteLens(item){
+ if(!admin||!confirm('هل تريدين حذف هذا العنصر وملفاته؟'))return;
+ try{
+  const {error}=await sb.from('development_lens').delete().eq('id',item.id);if(error)throw error;
+  const paths=(Array.isArray(item.files)?item.files:[]).map(f=>f.path).filter(p=>typeof p==='string'&&p.startsWith('lens/'));
+  if(paths.length){const result=await sb.storage.from('development-lens-files').remove(paths);if(result.error)console.warn('File cleanup:',result.error)}
+  await loadLens();
+ }catch(err){showError(err)}
+}
 
 refreshAuth().then(loadData);
 </script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script></body></html>
